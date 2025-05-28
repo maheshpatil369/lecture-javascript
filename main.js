@@ -1,31 +1,27 @@
-// // const, var, let
+// main.js
 
-// const accountId = 144553
-// let accountEmaiil = "mahesh12@google.com"
-// var accountPassword = "12345"
-// let accontCity = "Jaipur"
+window.addEventListener("DOMContentLoaded", function () {
+  const toggleBtn = document.getElementById("toggleBtn");
 
-// // accountId = 2
+  if (!toggleBtn) {
+    console.error("Toggle button with ID 'toggleBtn' not found.");
+    return;
+  }
 
-// accountEmaiil = "mah@gmail.com"
-// accountPassword = "212121212"
-// accontCity = "Bengluru"
+  // Apply saved theme on page load
+  const theme = localStorage.getItem("theme");
+  if (theme === "dark") {
+    document.body.classList.add("dark");
+  }
 
-// console.log(accountId);
-// console.table([accountId, accountEmaiil, accountPassword, accontCity]);
+  // Toggle dark/light mode on click
+  toggleBtn.addEventListener("click", function () {
+    document.body.classList.toggle("dark");
 
-// /* 
-
-// Prefer not to use var 
-// because of issue in block and functional scope 
-// */
-
-// number => 2 to power 53
-
-// console.log(typeof "***")
-
-
- let isloggedIn = "hitesh"
-
- let booleanIsLoogIn = Boolean(isloggedIn)
- console.log(booleanIsLoogIn);
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+  });
+});
